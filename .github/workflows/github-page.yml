@@ -33,6 +33,10 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           path: lemniscat.plugin.filetransform
       - run: |
+          mkdir /home/runner/work/doc/doc/docs/plugins/terraform
+          mkdir /home/runner/work/doc/doc/docs/plugins/powershell
+          mkdir /home/runner/work/doc/doc/docs/plugins/azurecli
+          mkdir /home/runner/work/doc/doc/docs/plugins/filetransform
           cp -r /home/runner/work/doc/doc/lemniscat.plugin.terraform/README.md /home/runner/work/doc/doc/docs/plugins/terraform
           cp -r /home/runner/work/doc/doc/lemniscat.plugin.powershell/README.md /home/runner/work/doc/doc/docs/plugins/powershell
           cp -r /home/runner/work/doc/doc/lemniscat.plugin.azurecli/README.md /home/runner/work/doc/doc/docs/plugins/azurecli
