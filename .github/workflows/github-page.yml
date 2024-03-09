@@ -2,7 +2,7 @@ name: github-pages
 on:
   push:
     branches: 
-      - feat/init-pages
+      - main
 
 jobs:
   deploy-ToGithubPages:
