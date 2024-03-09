@@ -32,6 +32,12 @@ nav:
   - How to use ? : usage.md
   - How to write a Manifest ? : manifest.md
   - How it' works ? : runtime.md
+  - How to use plugins ?:
+    - Terraform: plugins/terraform/README.md
+    - Powershell: plugins/powershell/README.md
+    - AzureCLI: plugins/azurecli/README.md
+    - FileTransform: plugins/filetransform/README.md
+
 
 # extra_css:
 #   - stylesheets/extra.css

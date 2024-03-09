@@ -12,6 +12,31 @@ jobs:
     environment: github-pages  
     steps:
       - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          repository: lemniscat-devops/lemniscat.plugin.terraform
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: lemniscat.plugin.terraform
+      - uses: actions/checkout@v4
+        with:
+          repository: lemniscat-devops/lemniscat.plugin.powershell
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: lemniscat.plugin.powershell
+      - uses: actions/checkout@v4
+        with:
+          repository: lemniscat-devops/lemniscat.plugin.azurecli
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: lemniscat.plugin.azurecli
+      - uses: actions/checkout@v4
+        with:
+          repository: lemniscat-devops/lemniscat.plugin.filetransform
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: lemniscat.plugin.filetransform
+      - run: |
+          cp -r lemniscat.plugin.terraform/README.md doc/docs/plugins/terraform
+          cp -r lemniscat.plugin.powershell/README.md doc/docs/plugins/powershell
+          cp -r lemniscat.plugin.azurecli/README.md doc/docs/plugins/azurecli
+          cp -r lemniscat.plugin.filetransform/README.md doc/docs/plugins/filetransform
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
