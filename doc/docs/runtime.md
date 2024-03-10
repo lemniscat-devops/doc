@@ -1,16 +1,16 @@
 The runtime work in 9 steps:
 
-1. **Load the configuration**: The runtime load the configuration files.
-2. **Load manifest variables**: The runtime load the variables defined in the manifest file.
-3. **Load the extra variables**: The runtime load the extra variables.
-4. **Interpete all the variables**: The runtime interpete all the variables. If some variables can't be interpeted, the runtime keep the variable as is and continue the execution.
-5. **Define the steps and capabilities to execute**: The runtime define the steps and capabilities to execute based on the parameters.
-6. **Read the manifest file (and templates)**: The runtime read the manifest file to get the definition of the product to intantiate.
-7. **Donwload (if needed) the plugins**: The runtime download the plugins needed to execute the tasks.
-8. **Execute the workflow**: The runtime execute the workflow to activate the capabilities.
-9. **Save the output context**: If it's defined, the runtime save the context (all variables) in the output file.
+1. [**Load the configuration**](#1-load-the-configuration): The runtime load the configuration files.
+2. [**Load manifest variables**](#2-load-manifest-variables): The runtime load the variables defined in the manifest file.
+3. [**Load the extra variables**](#3-load-the-extra-variables): The runtime load the extra variables.
+4. [**Interpete all the variables**](#4-interpete-all-the-variables): The runtime interpete all the variables. If some variables can't be interpeted, the runtime keep the variable as is and continue the execution.
+5. [**Define the steps and capabilities to execute**](#5-define-the-steps-and-capabilities-to-execute): The runtime define the steps and capabilities to execute based on the parameters.
+6. [**Read the manifest file (and templates)**](#6-read-the-manifest-file-and-templates): The runtime read the manifest file to get the definition of the product to intantiate.
+7. [**Donwload (if needed) the plugins**](#7-donwload-if-needed-the-plugins): The runtime download the plugins needed to execute the tasks.
+8. [**Execute the workflow**](#8-execute-the-workflow): The runtime execute the workflow to activate the capabilities.
+9. [**Save the output context**](#9-save-the-output-context): If it's defined, the runtime save the context (all variables) in the output file.
 
-### 1. Load the configuration
+## 1. Load the configuration
 
 The runtime load the configuration files. The configuration files are the files that contain the variables needed to instantiate the product. The order of the files is important. The variables defined in the first file can be overridden by the variables defined in the second file, and so on.
 
@@ -57,7 +57,7 @@ After loading previous files the runtime will have the following variables :
 | subscriptionId | 12345678-1234-1234-1234-123456789012 |
 | rgName | ${{ projectName }}-${{ appName }}-${{ envName }}-rg |
 
-### 2. Load manifest variables
+## 2. Load manifest variables
 
 After loading the configuration files, the runtime load the variables defined in the manifest file. The variables defined in the manifest file can override the variables defined in the configuration files.
 
@@ -86,7 +86,7 @@ After loading the manifest file, the runtime will have the following variables :
 | rgName | ${{ projectName }}-${{ appName }}-${{ envName }}-rg |
 | productName | ${{ projectName }}-${{ appName }}-${{ envName }}-app |
 
-### 3. Load the extra variables
+## 3. Load the extra variables
 
 After loading the configuration files, the runtime load the extra variables. The extra variables are the override variables to use. These variables are used to override the variables defined in the configuration files.
 
@@ -118,7 +118,7 @@ After loading the extra variables, the runtime will have the following variables
 | productName | ${{ projectName }}-${{ appName }}-${{ envName }}-app |
 | appName | myApp |
 
-### 4. Interpete all the variables
+## 4. Interpete all the variables
 
 After loading the extra variables, the runtime interpete all the variables. If some variables can't be interpeted, the runtime keep the variable as is and continue the execution.
 
@@ -149,24 +149,24 @@ For example, if a variable contains a complex value like this :
 
 The interpreter will interpete the `complexValue` variable to have the following value : `{ "productName": "myProject-myApp-developement-app", "envName": "developement" }`.
 
-### 5. Define the steps and capabilities to execute
+## 5. Define the steps and capabilities to execute
 
 After interpeting all the variables, the runtime define the steps and capabilities to execute based on the parameters.
 
 !!! note
     To define the steps and capabilities to execute, you can use the `-s` or `--steps` parameter in the command line.
 
-### 6. Read the manifest file (and templates)
+## 6. Read the manifest file (and templates)
 
 After defining the steps and capabilities to execute, the runtime read the manifest file to get the definition of the product to intantiate.
 The runtime load the capabilities, the solutions, interprete templates and load the tasks to execute.
 
-### 7. Donwload (if needed) the plugins
+## 7. Donwload (if needed) the plugins
 
 After reading the manifest file, the runtime download the plugins needed to execute the tasks.
 Plugins need to be defined in the `requirements` section of the manifest file.
 
-### 8. Execute the workflow
+## 8. Execute the workflow
 
 After downloading the plugins, the runtime execute the workflow to activate the capabilities.
 
@@ -227,7 +227,7 @@ So the runtime will have the following variables :
 
 After executing the plugin, the runtime interpret all the variables. If some variables can't be interpeted, the runtime keep the variable as is and continue the execution.
 
-### 9. Save the output context
+## 9. Save the output context
 
 If it's defined, the runtime save the context (all variables interpreted) in the output file.
 

@@ -4,7 +4,7 @@ To use the runtime, you can use the following command:
 lem -m <manifest_file> -c <config_files> -s <steps> -x <extraVariables> -o <outputContextFile> -v <verbosity>
 ```
 
-### Parameters
+## Parameters
 
 `-m` or `--manifest`: **[Required]** The manifest file to use. This file contains the definition of the product to instantiate.
 
@@ -18,18 +18,18 @@ lem -m <manifest_file> -c <config_files> -s <steps> -x <extraVariables> -o <outp
 
 `-v` or `--verbosity` : [Optional] The verbosity level to use. This level is used to control the verbosity of the logs.
 
-### Definition
+## Definition
 
-#### Manifest
+### Manifest
 
 The parameters `-m` or `--manifest` is the path to the manifest file to use. This file contains the definition of the product to instantiate.
 
-#### Config files
+### Config files
 
 The parameters `-c` or `--configFiles` is the path to the configuration files to use. These files contain the variables needed to instantiate the product.
 The order of the files is important. The variables defined in the first file can be overridden by the variables defined in the second file, and so on.
 
-#### Steps
+### Steps
 
 The parameters `-s` or `--steps` is the steps and capabilities to execute. These steps are defined in the manifest file.
 You need to respect the naming convention to be sure that the runtime can execute the steps :

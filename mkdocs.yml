@@ -27,11 +27,11 @@ markdown_extensions:
 docs_dir: doc/docs
 
 nav:
-  - How it is ? : index.md
-  - How to install ? : setup.md
-  - How to use ? : usage.md
+  - What is this ? : index.md
+  - How to install the runtime ? : setup.md
+  - How to use the runtime ? : usage.md
   - How to write a Manifest ? : manifest.md
-  - How it' works ? : runtime.md
+  - How the runtime works ? : runtime.md
   - How to use plugins ?:
     - Terraform: plugins/terraform/README.md
     - Powershell: plugins/powershell/README.md
