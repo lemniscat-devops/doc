@@ -1,4 +1,7 @@
-Lemniscat is a Framework to provide a DevOps approach to the development of products. 
+Lemniscat is a Framework to provide a DevOps approach to the development of products.
+
+![Lemniscat](img/lemniscat.png)
+
 To be operational, the framework needs to be used with a runtime and plugins.
 They are based on the following principles:
 

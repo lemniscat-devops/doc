@@ -4,14 +4,19 @@ theme:
   name: material
   language: en
   #custom_dir: doc/overrides
+  logo: assets/logo.png
   palette:
     scheme: slate
     primary: amber
   font:
     text: Poppins
+  icon:
+    repo: fontawesome/brands/github
   features:
     - content.code.copy
 
+repo_name: Lemniscat-devops
+repo_url: https://github.com/lemniscat-devops
 
 plugins:
   - search
