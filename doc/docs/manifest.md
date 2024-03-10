@@ -1,10 +1,10 @@
 The manifest file is a YAML file that contains the definition of the product to deploy. It contains the following sections:
 
 - [**variables**](#variables): The variables needed to deploy the product.
-- **capabilities**: The capabilities can be activated during the product deployment.
-- **requirements**: The plugins needed to execute tasks describe in the manifest file.
+- [**capabilities**](#capabilities): The capabilities can be activated during the product deployment.
+- [**requirements**](#requirements): The plugins needed to execute tasks describe in the manifest file.
 
-### Variables
+## Variables
 
 The variables are the static parameters needed to deploy the product. They are defined in the manifest file, and can be used in the tasks to execute.
 For example, you can define a variable to define the name of the product, and use this variable in the tasks to create the product.
@@ -37,7 +37,7 @@ variables:
   ...
 ```
 
-### Capabilities
+## Capabilities
 
 The capabilities are the DevOps steps that can be activated during the deployment of a product. It's designed to be sure that all the DevOps aspects are covered during the design of a product.
 For each capability, you can define the [solutions](#solutions) that need to be executed to activate the capability.
@@ -102,7 +102,7 @@ capabilities:
       ...
 ```
 
-#### Definition
+### Definition
 
 Here, the list of capabilities that you can define in the manifest file:
 
@@ -120,9 +120,9 @@ Of course, you don't have to define all the capabilities in the manifest file. Y
 You can't define the same capability twice in the manifest file. If you define the same capability twice, the runtime will raise an error.
 You can't define a capability that is not in the list above. If you define a capability that is not in the list above, the runtime will raise an error.
 
-### Solutions
+## Solutions
 
-The solutions are the tools that can be used to execute the capabilities. For example, you can use Jenkins to execute the build capability, or you can use Ansible to execute the deployment capability.
+The solutions are the tools that can be used to execute the [capabilities](#capabilities). For example, you can use Jenkins to execute the build capability, or you can use Ansible to execute the deployment capability.
 For each solution, you can define a workflow with the [tasks](#tasks) that need to be executed to activate the capability.
 For example, for Azure (in operate capability), you can define the [tasks](#tasks) that need to be executed to deploy infrastructure with Terraform.
 
@@ -161,7 +161,7 @@ capabilities:
   ...
 ```	
 
-#### Definition
+### Definition
 
 You can define as many solutions as you want for a capability. For example, you can define Github and Gitlab as solutions for the code capability.
 You can't define the same solution twice for a capability. If you define the same solution twice for a capability, the runtime will raise an error.
@@ -179,14 +179,14 @@ solutions:
     ...
 ```
 
-### Tasks
+## Tasks
 
 The tasks are the actions that need to be executed to activate the capability. For example, you can define a task to execute a script, or a task to execute a terraform command.
 For each task, you need to tag in witch [step](#step-concept) it needs to be executed, and the parameters that need to be used to execute the task.
 You can define many tags for a task, and the task will be executed in the same step as the tag.
 In the same step, the tasks are executed in the same order as defined in the manifest file.
 
-The tasks are defined in the solution section of the manifest file, and are defined as a dictionary with the following structure:
+The tasks are defined in the [solution](#solutions) section of the manifest file, and are defined as a dictionary with the following structure:
 
 ```yaml
 capabilities:
@@ -333,7 +333,7 @@ tasks:
     token: ${{ github.token }}
 ```
 
-#### Definition
+### Definition
 
 You can define as many tasks as you want for a solution. For example, you can define a task to create a repository, a task to add collaborators, a task to deploy the infrastructure, ...
 During the execution of the runtime, the tasks are executed in the same order as defined in the manifest file.
@@ -355,7 +355,7 @@ To define a template, you need to define the following parameters:
 - `template: <templatePath>`, with `<templatePath>` the path to the template file to use. This parameter is mandatory.
 - `displayName: <displayName>`, with `<displayName>` the name of the task to display in the logs. This parameter is optional.
 
-### Requirements
+## Requirements
 
 The requirements are the plugins needed to execute tasks describe in the manifest file. They are defined in the `requirements` section of the manifest file, and are defined as a dictionary with the following structure:
 
