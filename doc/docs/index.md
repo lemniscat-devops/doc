@@ -38,14 +38,14 @@ A DevOps-oriented product is one designed to address all aspects of the DevOps a
 
 Let's take the example of the Azure function app. If we're to design a DevOps-oriented product to allow our teams to be autonomous and responsible for this function app, we need to ask the following questions:
 
-1 - How will my consumer produce the necessary code? With Git?
-2 - How will my consumer build their code? With a GitHub CI pipeline?
-3 - How will my consumer test their code? With SonarQube, Cucumber...?
-4 - How will my consumer release their code? With Azure Artifact?
-5 - How will my consumer deploy their code? With Azure DevOps?
-6 - How will my consumer operate their code? With an Azure Function App?
-7 - How will my consumer monitor their code? With Azure Monitor?
-8 - How will my consumer manage bugs and code evolutions? With Jira?
+- How will my consumer produce the necessary code? With Git?
+- How will my consumer build their code? With a GitHub CI pipeline?
+- How will my consumer test their code? With SonarQube, Cucumber...?
+- How will my consumer release their code? With Azure Artifact?
+- How will my consumer deploy their code? With Azure DevOps?
+- How will my consumer operate their code? With an Azure Function App?
+- How will my consumer monitor their code? With Azure Monitor?
+- How will my consumer manage bugs and code evolutions? With Jira?
 
 ### The Lemniscat Framework
 
