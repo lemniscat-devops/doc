@@ -32,7 +32,8 @@ markdown_extensions:
 docs_dir: doc/docs
 
 nav:
-  - What is this ? : index.md
+  - Why Lemniscat ? : index.md
+  - What is this ? : what.md
   - How to install the runtime ? : setup.md
   - How to use the runtime ? : usage.md
   - How to write a Manifest ? : manifest.md

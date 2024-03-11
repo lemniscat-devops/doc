@@ -1,51 +1,60 @@
-Lemniscat is a Framework to provide a DevOps approach to the development of products.
+## Breaking Down Barriers: My Journey to DevOps, Cloud, and Platform Engineering
 
 ![Lemniscat](img/lemniscat.png)
 
-To be operational, the framework needs to be used with a runtime and plugins.
-They are based on the following principles:
+For several years now, I've had the privilege of assisting various clients across different sectors in their digital transformation strategies. With two decades of experience under my belt, I've held numerous positions ranging from support to development, including system and network administration.
 
-- **Product oriented**: The framework is designed to be used in the development of products, not in the development of software. This means that the framework is designed to be used in the development of products that are composed of software, hardware, and other components.
-- **Modular**: The framework is designed to be modular, so that it can be used in different contexts and with different tools.
-- **Extensible**: The framework is designed to be extensible, so that it can be plugged with different tools and solutions that are not yet supported and you judge necessary.
-- **Open source**: The framework, runtime and plugins are open source, so that it can be used and modified by anyone.
-- **Community driven**: The framework, runtime and plugins is designed to be community driven, so that it can be used and improved by a community of users and developers.
-- **DevOps oriented**: The framework is designed to be used in a DevOps approach, so that it can be used to activate all the capabilities of DevOps (code, build, test, ...).
-- **CI/CD solution software agnostic**: The runtime is designed to be used with any CI/CD solution, but not only if you prefer you can use it with a simple script, a workflow runner, or any other solution.
-- **Cloud agnostic**: The runtime is designed to be used with any cloud provider, so that it can be used with any cloud provider.
-- **locally executable**: The runtime is designed to be executed locally, so that it can be used in a local environment to help the development of products (for example).
+### Wall of Confusion and the DevOps Movement
 
-## System model
+Early on, I noticed the strange gap that separated the world of administrators from that of developers. As a system and network administrator, I often found developers to be brusque and less demanding. How many times have I grumbled because the installation or update manual was poorly written? How many times have I struggled to perform an operation on software because it wasn't documented in the operational manual (if there was one)?
 
-The framework is based on the following system model:
+On the flip side, when I worked as a developer, I found system administrators to be excessively procedural. "Did you submit request X by filling out form Y?" And when administrators finally performed the installation or update of the software, they messed up the installation procedure. In short, I experienced the famous "wall of confusion" from both sides.
 
-![system model](img/system-model.png)
+When the DevOps movement emerged, I quickly became enthusiastic. "Of course, it's obvious! Why didn't we think of this sooner?" Of course, I encountered many people resistant to this change, advancing arguments of varying validity.
 
-### Capabilities
+Ultimately, I realized that this was my calling. I believed in the importance of advocating for DevOps, even if it meant convincing one person at a time.
 
-The capabilities are the DevOps steps that can be activated during the deployment of a product. It's designed to be sure that all the DevOps aspects are covered during the design of a product. 
-For each capability, you can define the [solutions](#solutions) that need to be executed to activate the capability.
-For example, for capability code you can define Github and Gitlab as [solutions](#solutions) to activate the capability when the product is deployed.
+### The Cloud as a opportunity to break down the wall
 
-### Solutions
+Then, with the advent of the Cloud in my work environment, my enthusiasm was reignited. "This is fantastic! We finally have an opportunity to break down the wall." The cloud allowed us to provision technical infrastructures quickly, reducing constraints related to complexity and deployment time. This was beneficial for developers who could expect to deliver their work more rapidly. Additionally, the platform approach of these environments also greatly simplified tasks for our system and network administrators.
 
-The solutions are the tools that can be used to execute the [capabilities](#capabilities). For example, you can use Jenkins to execute the build capability, or you can use Ansible to execute the deployment capability.
-For each solution, you can define a workflow with the [tasks](#tasks) that need to be executed to activate the capability.
-For example, for Azure (in operate capability), you can define the [tasks](#tasks) that need to be executed to deploy infrastructure with Terraform.
+Fast forward several years, and I've specialized in Cloud and DevOps adoption. While clients have relatively smoothly transitioned to the Cloud, implementing DevOps practices within companies has proven to be challenging. Although there are some beautiful success stories, in my opinion, they remain too rare.
 
-### Tasks
+### The Platform Engineering Movement
 
-The tasks are the actions that need to be executed to activate the capability. For example, you can define a task to execute a script, or a task to execute a terraform command.
-For each task, you need to tag in witch [step](#step-concept) it needs to be executed, and the parameters that need to be used to execute the task.
-You can define many tags for a task, and the task will be executed in the same step as the tag.
-In the same step, the tasks are executed in the same order as defined in the manifest file.
+Through years of experience and extensive reading of influential authors on the subject like Jez Humble, Gene Kim, Matthew Skelton, Nicole Forsgren, I've come to understand that at the enterprise level, the approach must be comprehensive. Each software component comprising the company's IT system must be designed to be coherent as a whole.
 
-### Step concept
+The mental load that a DevOps approach can bring tends to cause teams to focus unidirectionally on their application's sole objective for which they are responsible. It's as if each team is running a sprint in their own lane, forgetting about other teams. The confusion is no longer just between developers and administrators but now between project teams. So, what can we do?
 
-The step is the concept that defines the big stages of the instantiation of the product. It's designed to be sure that all the [tasks](#tasks) are executed in the right order during the instantiation of the product.
-Their are 4 steps:
+Taking a step back, I noticed that Cloud providers offer platforms that lighten our responsibility and mental load while still keeping us accountable. For example, when I create a function app on Azure, I don't have to worry about the underlying infrastructure: data centers that need maintenance, network infrastructures that need to be operated, software that needs to be kept up to date. Yet, I remain responsible for my function app. If the code I deploy doesn't work, if my function isn't monitored, it's still my responsibility.
 
-- **pre**: The step to prepare the instantiation of the product. For example, you can use this step to prepare the environment to deploy the product, prepare the configuration files, generate terraform plan, ...
-- **run**: The step to execute the instantiation of the product. For example, you can use this step to deploy the infrastructure, define access rights, create git repository, ...
-- **post**: The step to finalize the instantiation of the product. For example, you can use this step to execute the tests, generate the documentation, register the product in the CMDB, ...
-- **clean**: The step to clean the instantiation of the product. For example, you can use this step to delete the infrastructure, delete the git repository, ...
+This platform allows me to be more efficient while remaining autonomous and responsible. This concept of a platform promoted by the "Platform Engineering" movement may be the way forward.
+
+### The DevOps-Oriented Product
+
+It's been two years since I've been working with my colleagues to implement this concept. We're establishing a platform for project teams to enable them to be as autonomous and responsible as possible while limiting their mental load. The experience has been extremely promising. We're building DevOps-oriented products that we make available on our platform's marketplace.
+
+A DevOps-oriented product is one designed to address all aspects of the DevOps approach for the consumer of the product.
+
+Let's take the example of the Azure function app. If we're to design a DevOps-oriented product to allow our teams to be autonomous and responsible for this function app, we need to ask the following questions:
+
+1 - How will my consumer produce the necessary code? With Git?
+2 - How will my consumer build their code? With a GitHub CI pipeline?
+3 - How will my consumer test their code? With SonarQube, Cucumber...?
+4 - How will my consumer release their code? With Azure Artifact?
+5 - How will my consumer deploy their code? With Azure DevOps?
+6 - How will my consumer operate their code? With an Azure Function App?
+7 - How will my consumer monitor their code? With Azure Monitor?
+8 - How will my consumer manage bugs and code evolutions? With Jira?
+
+### The Lemniscat Framework
+
+Implementing this type of product requires a lot of work. Integrating into a platform the multitude of technological solutions that compose a company's information system is no easy task.
+
+Products designed for delivery typically rely on the same delivery solutions as the product itself when instantiated, making our product hyper-aligned with the CI/CD chain. Given the complexity of the product, this makes the product highly specific to its context and difficult to extend to another context (another project or another company).
+
+How can we design a product more simply? How can we reduce the product's adherence to the technological solutions that compose it, and particularly to the tools of the CI/CD chain?
+
+I searched for weeks and months. I saw several solutions like Dagger.IO, but none convinced me. So, at the end of 2023, I decided to create my own framework.
+
+I am honored to present to you the newcomer: **Lemniscat**.
