@@ -1,4 +1,4 @@
-## Breaking Down Barriers: My Journey to DevOps, Cloud, and Platform Engineering
+## Breaking Down Barriers: My Journey into DevOps, Cloud, and Platform Engineering
 
 ![Lemniscat](img/lemniscat.png)
 
@@ -58,3 +58,27 @@ How can we design a product more simply? How can we reduce the product's adheren
 I searched for weeks and months. I saw several solutions like Dagger.IO, but none convinced me. So, at the end of 2023, I decided to create my own framework.
 
 I am honored to present to you the newcomer: **Lemniscat**.
+
+#### Why this name?
+
+The Lemniscate is a mathematical curve that evokes the symbol of infinity, representing an endless continuity or an infinite loop. In parallel, the "Lemni's cat" is a fictitious character with no specific connection to any particular work, whose name creates an intelligent play on words with the Lemniscate. This association between a fictional character and a mathematical shape gives rise to an intriguing concept named **Lemniscat**.
+
+The Lemniscate is a mathematical curve that takes the shape of an elongated loop, closely resembling the infinity symbol (∞). This curve has interesting properties and is often used to represent concepts of infinite continuity or endless cycles.
+
+"Lemni's cat" is a fictitious character imagined to illustrate the play on words between the Lemniscate and a fictional entity. This cat is not associated with any specific work but is simply used as an example to highlight the phonetic resemblance between "Lemni's cat" and "Lemniscate".
+
+The DevOps approach is a software development methodology that emphasizes collaboration between development and operations teams, as well as the automation of processes. The infinity symbol has become the emblem of DevOps, symbolizing the continuous cycle of planning, development, testing, deployment, and monitoring of software.
+
+The Lemniscate, with its shape reminiscent of the infinity symbol, along with the play on words with "Lemni's cat," creatively illustrate the notion of continuity and infinite cycles, in perfect harmony with DevOps principles.
+
+By associating the Lemniscate, Lemni's cat, and the infinity symbol with the DevOps approach, we get an intriguing illustration of the convergence between mathematics, fiction, and software development practices. This intelligent play on words highlights the cyclical and continuous nature of the development process, underscoring the ingenuity of the connection between these different concepts.
+
+#### What is the goal of Lemniscat?
+
+The goal of Lemniscat is to provide a framework that allows the design of DevOps-oriented products that are as independent as possible from the technological solutions that compose them, particularly from the tools of the CI/CD chain.
+
+The Lemniscat framework is designed to provide a set of guidelines and best practices for designing DevOps-oriented products. By following these guidelines, product designers can create products that are more flexible and adaptable to different contexts, making them easier to extend and integrate into various environments.
+
+The Lemniscat framework is intended to help product designers create products that are more aligned with the principles of DevOps, promoting autonomy, responsibility, and accountability for the consumers of the products.
+
+The lemniscat framework is like a meta framework that can operate many other framework (terraform, ansible, powershell, python, ...) to create a DevOps-oriented product.
