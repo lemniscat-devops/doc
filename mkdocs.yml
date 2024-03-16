@@ -37,7 +37,7 @@ nav:
   - How to install the runtime ? : setup.md
   - How to use the runtime ? : usage.md
   - How to write a Manifest ? : manifest.md
-  - How the runtime works ? : runtime.md
+  - How does the runtime works ? : runtime.md
   - How to use plugins ?:
     - Terraform: plugins/terraform/README.md
     - Powershell: plugins/powershell/README.md

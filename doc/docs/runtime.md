@@ -1,14 +1,14 @@
-The runtime work in 9 steps:
+The runtime operates through a sequence of 9 distinct steps:
 
-1. [**Load the configuration**](#1-load-the-configuration): The runtime load the configuration files.
-2. [**Load manifest variables**](#2-load-manifest-variables): The runtime load the variables defined in the manifest file.
-3. [**Load the extra variables**](#3-load-the-extra-variables): The runtime load the extra variables.
-4. [**Interpete all the variables**](#4-interpete-all-the-variables): The runtime interpete all the variables. If some variables can't be interpeted, the runtime keep the variable as is and continue the execution.
+1. [**Load the configuration**](#1-load-the-configuration): The runtime loads the configuration files.
+2. [**Load manifest variables**](#2-load-manifest-variables): The runtime loads the variables defined in the manifest file.
+3. [**Load the extra variables**](#3-load-the-extra-variables): The runtime loads the extra variables.
+4. [**Interpet all the variables**](#4-interpete-all-the-variables): The runtime interpet all the variables. If some variables can't be interpreted, the runtime keeps the variable as is and continue the execution.
 5. [**Define the steps and capabilities to execute**](#5-define-the-steps-and-capabilities-to-execute): The runtime define the steps and capabilities to execute based on the parameters.
-6. [**Read the manifest file (and templates)**](#6-read-the-manifest-file-and-templates): The runtime read the manifest file to get the definition of the product to intantiate.
-7. [**Donwload (if needed) the plugins**](#7-donwload-if-needed-the-plugins): The runtime download the plugins needed to execute the tasks.
+6. [**Read the manifest file (and templates)**](#6-read-the-manifest-file-and-templates): The runtime reads the manifest file to get the definition of the product to instantiate.
+7. [**Download (if needed) the plugins**](#7-donwload-if-needed-the-plugins): The runtime downloads the plugins needed to execute the tasks.
 8. [**Execute the workflow**](#8-execute-the-workflow): The runtime execute the workflow to activate the capabilities.
-9. [**Save the output context**](#9-save-the-output-context): If it's defined, the runtime save the context (all variables) in the output file.
+9. [**Save the output context**](#9-save-the-output-context): If it's defined, the runtime saves the context (all variables) in the output file.
 
 ## 1. Load the configuration
 
