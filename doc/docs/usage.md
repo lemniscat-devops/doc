@@ -53,7 +53,7 @@ For example :
 - to execute all the steps for the code capability, you must define : `-s ['all:code']`
 - to execute all the steps for all capability, you must define : `-s ['all:all']`
 
-If you want to execute all the cleanup steps for a capability (`pre`, `clean` and `post`), you can define `allclean` as the step to execute.
+If you want to execute all the cleanup steps for a capability (`pre-clean`, `run-clean` and `post-clean`), you can define `allclean` as the step to execute.
 For example :
 
 - to execute all the cleanup steps for the code capability, you must define : `-s ['allclean:code']`
