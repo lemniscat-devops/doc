@@ -187,7 +187,7 @@ For each solution, the runtime execute the tasks defined.
 ### Workflow execution
 
 The tasks are always executed in a specific order. The order is defined by the steps defined for each task.
-If you execute the runtime with the `--steps ["all:code"]` parameter, the runtime will execute all the tasks (exept `clean` steps) with this order :
+If you execute the runtime with the `--steps ["all:code"]` parameter, the runtime will execute all the tasks (exept `pre-clean`, `run-clean`, `post-clean` steps) with this order :
 
 1. All tasks with the `pre` step
 2. All tasks with the `run` step
@@ -195,9 +195,9 @@ If you execute the runtime with the `--steps ["all:code"]` parameter, the runtim
 
 If you execute the runtime with the `--steps ["allclean:code"]` parameter, the runtime will execute all the tasks (exept `run` steps) with this order :
 
-1. All tasks with the `pre` step
-2. All tasks with the `clean` step
-3. All tasks with the `post` step
+1. All tasks with the `pre-clean` step
+2. All tasks with the `run-clean` step
+3. All tasks with the `post-clean` step
 
 !!! note
     If your task is tagged with multiple steps and the runtime is launched to execute this steps both, the task will be executed once.
