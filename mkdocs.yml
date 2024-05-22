@@ -43,6 +43,7 @@ nav:
     - Powershell: plugins/powershell/README.md
     - AzureCLI: plugins/azurecli/README.md
     - FileTransform: plugins/filetransform/README.md
+    - Gitlab: plugins/gitlab/README.md
 
 
 # extra_css:
