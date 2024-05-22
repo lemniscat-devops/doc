@@ -32,15 +32,22 @@ jobs:
           repository: lemniscat-devops/lemniscat.plugin.filetransform
           token: ${{ secrets.GITHUB_TOKEN }}
           path: lemniscat.plugin.filetransform
+      - uses: actions/checkout@v4
+        with:
+          repository: lemniscat-devops/lemniscat.plugin.gitlab
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: lemniscat.plugin.gitlab
       - run: |
           mkdir /home/runner/work/doc/doc/doc/docs/plugins/terraform
           mkdir /home/runner/work/doc/doc/doc/docs/plugins/powershell
           mkdir /home/runner/work/doc/doc/doc/docs/plugins/azurecli
           mkdir /home/runner/work/doc/doc/doc/docs/plugins/filetransform
+          mkdir /home/runner/work/doc/doc/doc/docs/plugins/gitlab
           cp -r /home/runner/work/doc/doc/lemniscat.plugin.terraform/README.md /home/runner/work/doc/doc/doc/docs/plugins/terraform
           cp -r /home/runner/work/doc/doc/lemniscat.plugin.powershell/README.md /home/runner/work/doc/doc/doc/docs/plugins/powershell
           cp -r /home/runner/work/doc/doc/lemniscat.plugin.azurecli/README.md /home/runner/work/doc/doc/doc/docs/plugins/azurecli
           cp -r /home/runner/work/doc/doc/lemniscat.plugin.filetransform/README.md /home/runner/work/doc/doc/doc/docs/plugins/filetransform
+          cp -r /home/runner/work/doc/doc/lemniscat.plugin.gitlab/README.md /home/runner/work/doc/doc/doc/docs/plugins/gitlab
       - uses: actions/setup-python@v2
         with:
           python-version: 3.x
