@@ -55,7 +55,55 @@ After loading previous files the runtime will have the following variables :
 | envName | developement |
 | location | West Europe |
 | subscriptionId | 12345678-1234-1234-1234-123456789012 |
-| rgName | ${{ projectName }}-${{ appName }}-${{ envName }}-rg |
+| rgName | \${{ projectName }}-\${{ appName }}-${{ envName }}-rg |
+
+### The runtime can accept Yaml and Json files
+
+The runtime can accept Yaml and Json files.
+
+For example, you can define a configuration file to define the variables decribed at project level with a yaml file and another configuration file to define the variables decribed at environment level with a json file.
+
+### The runtime interprete the object variables
+
+The runtime interpret object variables. 
+For each attribute of the object, the runtime create a new variable with the name of the object and the name of the attribute separated by an underscore.
+For example, if you define a variable like this :
+
+```json
+{
+    "complexValue": {
+        "productName": "${{ projectName }}-${{ appName }}-${{ envName }}-app",
+        "envName": "${{ envName }}"
+    }
+}
+```
+
+The runtime will have the following variables :
+
+| Variable | Value |
+|----------|-------|
+| complexValue_productName | \${{ projectName }}-\${{ appName }}-${{ envName }}-app |
+| complexValue_envName | ${{ envName }} |
+
+If you need to keep object variable as is, you need to add the `~object` attribute. 
+For example, if you define a variable like this :
+
+```json
+{
+    "complexValue": {
+        "~object": true,
+        "productName": "${{ projectName }}-${{ appName }}-${{ envName }}-app",
+        "envName": "${{ envName }}"
+    }
+}
+```
+
+The runtime will have the following variables :
+
+| Variable | Value |
+|----------|-------|
+| complexValue | { "productName": "\${{ projectName }}-\${{ appName }}-${{ envName }}-app", "envName": "\${{ envName }}" } |
+
 
 ## 2. Load manifest variables
 
@@ -83,8 +131,8 @@ After loading the manifest file, the runtime will have the following variables :
 | envName | developement |
 | location | West Europe |
 | subscriptionId | 12345678-1234-1234-1234-123456789012 |
-| rgName | ${{ projectName }}-${{ appName }}-${{ envName }}-rg |
-| productName | ${{ projectName }}-${{ appName }}-${{ envName }}-app |
+| rgName | \${{ projectName }}-\${{ appName }}-${{ envName }}-rg |
+| productName | \${{ projectName }}-\${{ appName }}-${{ envName }}-app |
 
 ## 3. Load the extra variables
 
@@ -114,8 +162,8 @@ After loading the extra variables, the runtime will have the following variables
 | envName | developement |
 | location | West Europe |
 | subscriptionId | 12345678-1234-1234-1234-123456789012 |
-| rgName | ${{ projectName }}-${{ appName }}-${{ envName }}-rg |
-| productName | ${{ projectName }}-${{ appName }}-${{ envName }}-app |
+| rgName | \${{ projectName }}-\${{ appName }}-${{ envName }}-rg |
+| productName | \${{ projectName }}-\${{ appName }}-${{ envName }}-app |
 | appName | myApp |
 
 ## 4. Interpete all the variables
@@ -145,7 +193,7 @@ For example, if a variable contains a complex value like this :
 
 | Variable | Value |
 |----------|-------|
-| complexValue | { "productName": "${{ productName }}", "envName": "${{ envName }}" } |
+| complexValue | { "productName": "\${{ productName }}", "envName": "${{ envName }}" } |
 
 The interpreter will interpete the `complexValue` variable to have the following value : `{ "productName": "myProject-myApp-developement-app", "envName": "developement" }`.
 
@@ -168,17 +216,20 @@ Plugins need to be defined in the `requirements` section of the manifest file.
 
 ## 8. Execute the workflow
 
-After downloading the plugins, the runtime execute the workflow to activate the capabilities.
+After downloading the plugins, the runtime execute the workflow in this order :
+1. Run the `pre` phase. Execute systematically all the tasks in this phase regardless of the activated capabilities.
+2. Run the capabilities. Execute the tasks of the activated capabilities.
+3. Run the `post` phase. Execute systematically all the tasks in this phase regardless of the activated capabilities.
 
 !!! note
     **Activation of the capabilities**
-    To activate a capability you must define a variable named `<capability>.enable` and set to `true`.
-    For example, to activate the code capability, you must define the following variable : `code.enable: true`.
+    To activate a capability you must define a variable named `<capability>_enable` and set to `true`.
+    For example, to activate the code capability, you must define the following variable : `code_enable: true`.
 
 !!! note
     **Define the solution to use**
-    To define the solution to use to activate a capability, you must define a variable named `<capability>.solution` and set to the name of the solution to use.
-    For example, to define Github as the solution to activate the code capability, you must define the following variable : `code.solution: Github`.
+    To define the solution to use to activate a capability, you must define a variable named `<capability>_solution` and set to the name of the solution to use.
+    For example, to define Github as the solution to activate the code capability, you must define the following variable : `code_solution: Github`.
 
 For each capability enabled, the runtime execute the solution defined in variables.
 

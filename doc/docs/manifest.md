@@ -24,7 +24,7 @@ To do that, you can use the following syntax:
 ```yaml
 variables:
   - name: location
-    value: ${{ environment.location }}
+    value: ${{ environment_location }}
   ...
 ```
 
@@ -33,9 +33,51 @@ You can also concatenate variables to define a new variable. For example, you ca
 ```yaml
 variables:
   - name: resourceGroupId
-    value: '/subscriptions/${{ env.subscriptionId }}/resourceGroups/${{ rgName }}'
+    value: '/subscriptions/${{ env_subscriptionId }}/resourceGroups/${{ rgName }}'
   ...
 ```
+
+## Pre and Post phases
+
+The pre and post phases are the steps that need to be executed before and after the capabilities. They are defined in the manifest file, and can be used to execute tasks before and after the capabilities.
+
+The pre and post phases are defined in the `pre` and `post` sections of the manifest file, and are defined as a dictionary with the following structure:
+
+```yaml
+pre:
+  tasks:
+    - task: powershell
+      displayName: 'Transform user email to user trigram'
+      steps: 
+        - run
+      parameters:
+        type: inline
+        script: |
+          $reg = "${{ developerEmail }}" | Select-String -Pattern "${{ regex_developerEmail }}"
+          $trigram = "$($reg.Matches.Groups[1])$($reg.Matches.Groups[2])"
+          Write-Host "[lemniscat.pushvar] trigram=$trigram"
+...
+post:
+  tasks:
+    - task: powershell
+      displayName: 'Generate backstage catalog-info'
+      steps: 
+        - run
+      parameters:
+        type: inline
+        script: |
+          python -m pip install Jinja2
+          python ${{ templatePath }}/scripts/backstage/catalog-info-render.py "$($result.path)/vars.json" "${{ backstagePath }}/catalog-info/catalog-info.j2" "${{ backstagePath }}/catalog-info/catalog-info.yaml"
+      storeVariablesInFile:
+        format: json
+        withSecrets: true
+```
+
+### Definition
+
+You can define as many tasks as you want for the pre and post phases. For example, you can define a task to transform the user email to the user trigram in the pre phase, and a task to generate the backstage catalog-info in the post phase.
+You can also define templates for your tasks in the pre and post phases.
+During the execution of the runtime, the tasks are executed in the same order as defined in the manifest file.
 
 ## Capabilities
 
@@ -134,29 +176,29 @@ capabilities:
     solutions:
     - solution: github
       tasks:
-        - name: github
+        - task: github
           steps: 
             - run
           parameters:
             action: createRepository
-            name: ${{ product.name }}
-            description: ${{ product.description }}
-            visibility: ${{ domain.visibility }}
-            organization: ${{ domain.organization }}
-            token: ${{ github.token }}
+            name: ${{ product_name }}
+            description: ${{ product_description }}
+            visibility: ${{ domain_visibility }}
+            organization: ${{ domain_organization }}
+            token: ${{ github_token }}
             ...
     - solution: gitlab
       tasks:
-        - name: gitlab
+        - task: gitlab
           steps: 
             - run
           parameters:
             action: createRepository
-            name: ${{ product.name }}
-            description: ${{ product.description }}
-            visibility: ${{ domain.visibility }}
-            organization: ${{ domain.organization }}
-            token: ${{ gitlab.token }}
+            name: ${{ product_name }}
+            description: ${{ product_description }}
+            visibility: ${{ domain_visibility }}
+            organization: ${{ domain_organization }}
+            token: ${{ gitlab_token }}
             ...
   ...
 ```	
@@ -194,65 +236,65 @@ capabilities:
     solutions:
     - solution: github
       tasks:
-        - name: github
+        - task: github
           displayName: 'Create repository'
           steps: 
             - run
           parameters:
             action: createRepository
-            name: ${{ product.name }}
-            description: ${{ product.description }}
-            visibility: ${{ domain.visibility }}
-            organization: ${{ domain.organization }}
-            token: ${{ github.token }}
+            name: ${{ product_name }}
+            description: ${{ product_description }}
+            visibility: ${{ domain_visibility }}
+            organization: ${{ domain_organization }}
+            token: ${{ github_token }}
             ...
-        - name: github
+        - task: github
           displayName: 'Add collaborators'
           steps: 
             - run
           parameters:
             action: addCollaborators
-            name: ${{ product.name }}
-            collaborators: ${{ product.collaborators }}
-            token: ${{ github.token }}
-        - name: github
+            name: ${{ product_name }}
+            collaborators: ${{ product_collaborators }}
+            token: ${{ github_token }}
+        - task: github
           displayName: 'clone repository'
           steps: 
             - run
           parameters:
             action: clone
-            name: ${{ product.name }}
-            token: ${{ github.token }}
-        - name: copy
+            name: ${{ product_name }}
+            token: ${{ github_token }}
+        - task: copy
           displayName: 'Copy sample code'
           steps: 
             - pre
           parameters:
-            source: ${{ product.source }}
-            destination: ${{ currentpath }}/${{ product.name }}
-        - name: git
+            source: ${{ product_source }}
+            destination: ${{ currentpath }}/${{ product_name }}
+        - task: git
           displayName: 'Add files'
           steps: 
             - pre
           parameters:
             action: add
-            path: ${{ currentpath }}/${{ product.name }}
-        - name: git
+            path: ${{ currentpath }}/${{ product_name }}
+        - task: git
           displayName: 'Commit files'
           steps: 
             - pre
           parameters:
             action: commit
-            path: ${{ currentpath }}/${{ product.name }}
+            path: ${{ currentpath }}/${{ product_name }}
             message: 'Initial commit'
-        - name: git
+        - task: git
           displayName: 'Push files'
           steps: 
             - pre
           parameters:
             action: push
-            path: ${{ currentpath }}/${{ product.name }}
-            token: ${{ github.token }}
+            path: ${{ currentpath }}/${{ product_name }}
+            token: ${{ github_token }}
       ...
 ```
 
@@ -264,7 +306,7 @@ capabilities:
   code :
     - solutions: github
       tasks:
-        - template: ${{ templates.path }}/createRepository.yaml
+        - template: ${{ templates_path }}/createRepository.yaml
           displayName: 'Create and initialize repository'
 ```
 
@@ -272,65 +314,65 @@ And in the `createRepository.yaml` file, you can define the following tasks:
 
 ```yaml
 tasks:
-  - name: github
+  - task: github
     displayName: 'Create repository'
     steps: 
     - run
     parameters:
     action: createRepository
-    name: ${{ product.name }}
-    description: ${{ product.description }}
-    visibility: ${{ domain.visibility }}
-    organization: ${{ domain.organization }}
-    token: ${{ github.token }}
+    name: ${{ product_name }}
+    description: ${{ product_description }}
+    visibility: ${{ domain_visibility }}
+    organization: ${{ domain_organization }}
+    token: ${{ github_token }}
     ...
-  - name: github
+  - task: github
     displayName: 'Add collaborators'
     steps: 
     - run
     parameters:
     action: addCollaborators
-    name: ${{ product.name }}
-    collaborators: ${{ product.collaborators }}
-    token: ${{ github.token }}
-  - name: github
+    name: ${{ product_name }}
+    collaborators: ${{ product_collaborators }}
+    token: ${{ github_token }}
+  - task: github
     displayName: 'clone repository'
     steps: 
     - run
     parameters:
     action: clone
-    name: ${{ product.name }}
-    token: ${{ github.token }}
-  - name: copy
+    name: ${{ product_name }}
+    token: ${{ github_token }}
+  - task: copy
     displayName: 'Copy sample code'
     steps: 
     - pre
     parameters:
-    source: ${{ product.source }}
-    destination: ${{ currentpath }}/${{ product.name }}
-  - name: git
+    source: ${{ product_source }}
+    destination: ${{ currentpath }}/${{ product_name }}
+  - task: git
     displayName: 'Add files'
     steps: 
     - pre
     parameters:
     action: add
-    path: ${{ currentpath }}/${{ product.name }}
-  - name: git
+    path: ${{ currentpath }}/${{ product_name }}
+  - task: git
     displayName: 'Commit files'
     steps: 
     - pre
     parameters:
     action: commit
-    path: ${{ currentpath }}/${{ product.name }}
+    path: ${{ currentpath }}/${{ product_name }}
     message: 'Initial commit'
-  - name: git
+  - task: git
     displayName: 'Push files'
     steps: 
     - pre
     parameters:
     action: push
-    path: ${{ currentpath }}/${{ product.name }}
-    token: ${{ github.token }}
+    path: ${{ currentpath }}/${{ product_name }}
+    token: ${{ github_token }}
 ```
 
 ### Definition
@@ -340,13 +382,13 @@ During the execution of the runtime, the tasks are executed in the same order as
 
 To define a task, you need to define the following parameters:
 
-- `name: <pluginName>`, with `<pluginName>` the name of the plugin to execute. This parameter is mandatory.
+- `task: <pluginName>`, with `<pluginName>` the name of the plugin to execute. This parameter is mandatory.
 - `displayName: <displayName>`, with `<displayName>` the name of the task to display in the logs. This parameter is optional.
 - `steps: <steps>`, with `<steps>` the list of steps where the task needs to be executed. This parameter is mandatory.
   For example, you can define `steps: ['pre', 'run']` to execute the task in the pre and run steps.
 - `parameters: <parameters>`, with `<parameters>` the parameters needed to execute the task. This parameter is mandatory.
-- `condition: <condition>`, with `<condition>` the condition to execute the task. This parameter is optional. The condition is a boolean expression that needs to be true to execute the task. The condition can be based on the variables defined in the manifest file.
-  For example, you can define `condition: "${{ productName }}" != ""` to execute the task only if the product name is not empty.
+- `condition: <condition>`, with `<condition>` the condition to execute the task. This parameter is optional. The condition is a boolean expression that needs to be true to execute the task. The condition can be based on the variables defined in the manifest file. The condition engine used is based on `simple_eval` library. So you use a limited set of operators and functions described in the [simple_eval documentation](https://pypi.org/project/simpleeval/).
+  For example, you can define `condition: "${{ skipGitRepositoryCreation }} == False"` to execute the task only if the product name is not empty.
 
 You can also define a template for your tasks. For example, you can define a template to create and initialze a repository.
 
