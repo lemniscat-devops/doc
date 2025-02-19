@@ -44,10 +44,10 @@ For example :
 If you want to execute all the capabilities, you can define `all` as the capability to execute.
 For example :
 
-- to execute all the pre steps for all capability, you must define : `-s ['pre:all']`
-- to execute all the pre and run steps for all capability, you must define : `-s ['pre:all', 'run:all']`
+- to execute all the pre steps for all capabilities, you must define : `-s ['pre:all']`
+- to execute all the pre and run steps for all capabilities, you must define : `-s ['pre:all', 'run:all']`
 
-If you want to execute all the instanciation steps for a capability (`pre`, `run` and `post`), you can define `all` as the step to execute.
+If you want to execute all the instantiation steps for a capability (`pre`, `run` and `post`), you can define `all` as the step to execute.
 For example :
 
 - to execute all the steps for the code capability, you must define : `-s ['all:code']`
@@ -57,4 +57,4 @@ If you want to execute all the cleanup steps for a capability (`pre-clean`, `run
 For example :
 
 - to execute all the cleanup steps for the code capability, you must define : `-s ['allclean:code']`
-- to execute all the cleanup steps for all capability, you must define : `-s ['allclean:all']`
+- to execute all the cleanup steps for all capabilities, you must define : `-s ['allclean:all']`

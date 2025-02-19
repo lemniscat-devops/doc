@@ -14,7 +14,7 @@ When the DevOps movement emerged, I quickly became enthusiastic. "Of course, it'
 
 Ultimately, I realized that this was my calling. I believed in the importance of advocating for DevOps, even if it meant convincing one person at a time.
 
-### The Cloud as a opportunity to break down the wall
+### The Cloud as an opportunity to break down the wall
 
 Then, with the advent of the Cloud in my work environment, my enthusiasm was reignited. "This is fantastic! We finally have an opportunity to break down the wall." The cloud allowed us to provision technical infrastructures quickly, reducing constraints related to complexity and deployment time. This was beneficial for developers who could expect to deliver their work more rapidly. Additionally, the platform approach of these environments also greatly simplified tasks for our system and network administrators.
 
@@ -69,7 +69,7 @@ The Lemniscate is a mathematical curve that takes the shape of an elongated loop
 
 The DevOps approach is a software development methodology that emphasizes collaboration between development and operations teams, as well as the automation of processes. The infinity symbol has become the emblem of DevOps, symbolizing the continuous cycle of planning, development, testing, deployment, and monitoring of software.
 
-The Lemniscate, with its shape reminiscent of the infinity symbol, along with the play on words with "Lemni's cat," creatively illustrate the notion of continuity and infinite cycles, in perfect harmony with DevOps principles.
+The Lemniscate, with its shape reminiscent of the infinity symbol, along with the play on words with "Lemni's cat," creatively illustrates the notion of continuity and infinite cycles, in perfect harmony with DevOps principles.
 
 By associating the Lemniscate, Lemni's cat, and the infinity symbol with the DevOps approach, we get an intriguing illustration of the convergence between mathematics, fiction, and software development practices. This intelligent play on words highlights the cyclical and continuous nature of the development process, underscoring the ingenuity of the connection between these different concepts.
 
@@ -81,4 +81,4 @@ The Lemniscat framework is designed to provide a set of guidelines and best prac
 
 The Lemniscat framework is intended to help product designers create products that are more aligned with the principles of DevOps, promoting autonomy, responsibility, and accountability for the consumers of the products.
 
-The lemniscat framework is like a meta framework that can operate many other framework (terraform, ansible, powershell, python, ...) to create a DevOps-oriented product.
+The lemniscat framework is like a meta framework that can operate many other frameworks (terraform, ansible, powershell, python, ...) to create a DevOps-oriented product.
